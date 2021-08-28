@@ -1,14 +1,24 @@
-﻿namespace DataProblem1
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace DataProblem1
 {
     public class Road
     {
-        public string Start { get; set; }
-        public string End { get; set; }
+        public Place Start { get; }
+        public Place End { get; }
+        
+        public double Distance => Start.CalculateDistance(End);
 
-        public Road(string start, string end)
+        public Road(Place start, Place end)
         {
             Start = start;
             End = end;
+        }
+
+        public override string ToString()
+        {
+            return $"{Start.Name} => {End.Name}";
         }
     }
 }
