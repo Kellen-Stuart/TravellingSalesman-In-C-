@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kobld\\Downloads\\DataProblem1\\DataProblem1\\DataProblem1.csproj",
+      "projectUniqueName": "C:\\TravellingSalesman-In-C-\\DataProblem1\\DataProblem1\\DataProblem1.csproj",
       "projectName": "DataProblem1",
-      "projectPath": "C:\\Users\\kobld\\Downloads\\DataProblem1\\DataProblem1\\DataProblem1.csproj",
+      "projectPath": "C:\\TravellingSalesman-In-C-\\DataProblem1\\DataProblem1\\DataProblem1.csproj",
       "packagesPath": "C:\\Users\\kobld\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kobld\\Downloads\\DataProblem1\\DataProblem1\\obj\\",
+      "outputPath": "C:\\TravellingSalesman-In-C-\\DataProblem1\\DataProblem1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kobld\\AppData\\Roaming\\NuGet\\NuGet.Config"
