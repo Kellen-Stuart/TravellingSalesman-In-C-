@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using DataProblem1.Algorithm;
 
 namespace DataProblem1
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Data.InitializeData();
-            Console.WriteLine($"Find Random Path Algorithm");
-            var path = Algorithms.FindRandomPath();
-            Console.WriteLine(path.ToString());
+            var start = Data.Places.Single(x => x.Name == "Home");
+            var end = Data.Places.Single(x => x.Name == "School");
+            var algorithm = new AllPathsChooseShortest();
+
+            var path = algorithm.FindPath(start, end);
+            Console.WriteLine(path);
         }
     }
 }
