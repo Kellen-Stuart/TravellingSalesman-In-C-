@@ -14,41 +14,50 @@ namespace DataProblem1.Algorithm
         
         public Path FindPath(Place start, Place end)
         {
-            // Initialize Paths
-            var paths = new List<Path>();
-            var startPath = new Path();
-            startPath.AddPlace(start);
-            paths.Add(startPath);
-            
             // Run Algorithm
-            paths = FindPath(paths, end);
+            var paths = FindAllPaths(start, end);
             
             // Pick the shortest path
             return paths.OrderByDescending(p => p.TotalDistance).FirstOrDefault();
         }
 
-        public List<Path> FindPath(List<Path> paths, Place end)
+        public List<Path> FindAllPaths(Place start, Place end)
         {
-            for (var i=0; i<paths.Count; i++)
+            // Initialize Paths w/ Start Path
+            var paths = new List<Path>();
+            var startPath = new Path();
+            startPath.AddPlace(start);
+            paths.Add(startPath);
+            
+            var i = 0;
+            while (paths.Any(x => x.EndOfPath().Name != end.Name) || i == paths.Count - 1)
             {
                 var path = paths[i];
-                while (paths.All(x => x.EndOfPath().Name != end.Name))
+                while (path.EndOfPath().Name == end.Name)
                 {
+                    i++;
                     path = paths[i];
-                    while (path.EndOfPath().Name == end.Name)
-                        i++;
-                    
-                    var lastPlace = path.EndOfPath();
-                    foreach (var outboundRoad in lastPlace.AllOutboundRoads.Where(x => !path.BeenThere(x.End)))
-                    {
-                        var newPath = new Path();
-                        newPath.AddPlaces(path.Places);
-                        newPath.AddPlace(outboundRoad.End);
-                        paths.Add(newPath);
-                    }
-                    
-                    paths.RemoveAt(i);
                 }
+
+                if (paths.Any(p => p.EndOfPath().Name == end.Name && p.TotalDistance < path.TotalDistance))
+                {
+                    paths.RemoveAt(i);
+                    if (paths.Count == i)
+                        return paths;
+                    
+                    path = paths[i];
+                }
+                
+                var lastPlace = path.EndOfPath();
+                foreach (var outboundRoad in lastPlace.AllOutboundRoads.Where(x => !path.BeenThere(x.End)))
+                {
+                    var newPath = new Path();
+                    newPath.AddPlaces(path.Places);
+                    newPath.AddPlace(outboundRoad.End);
+                    paths.Add(newPath);
+                }
+                
+                paths.RemoveAt(i);
             }
 
             return paths;

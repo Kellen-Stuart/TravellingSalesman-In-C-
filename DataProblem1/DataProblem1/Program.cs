@@ -10,7 +10,7 @@ namespace DataProblem1
         {
             Data.InitializeData();
             var start = Data.Places.Single(x => x.Name == "Home");
-            var end = Data.Places.Single(x => x.Name == "School");
+            var end = Data.Places.Single(x => x.Name == "Pusher BMX");
             var algorithm = new AllPathsChooseShortest();
 
             var path = algorithm.FindPath(start, end);

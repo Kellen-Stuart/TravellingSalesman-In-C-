@@ -32,7 +32,15 @@
         "End": "Store B"
     },
     {
-        "Start":"School",
+        "Start": "School",
         "End": "Intersection"
+    },
+    {
+        "Start": "Home",
+        "End": "Pusher BMX"
+    },
+    {
+        "Start": "Pusher BMX",
+        "End": "Home"
     }
 ]
